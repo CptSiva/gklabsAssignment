@@ -1,15 +1,16 @@
 package com.loginPageAssignment;
 import javax.servlet.*;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 import java.io.*;
-import java.sql.*;
 import java.text.SimpleDateFormat;
+@SuppressWarnings("serial")
 @WebServlet("/rege")
 public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Receive parameters from the web page
-    	 //int id = Integer.parseInt(request.getParameter("id"));
+    	 
         String name = request.getParameter("name");
         String email=request.getParameter("email");
         int age = Integer.parseInt(request.getParameter("age"));
@@ -26,7 +27,7 @@ public class RegistrationServlet extends HttpServlet {
 
         // Create a DetailsBean object and set its attributes
         DetailsBean detailsBean = new DetailsBean();
-      //sdetailsBean.setId(id);
+     
         detailsBean.setName(name);
         detailsBean.setEmail(email);
         detailsBean.setAge(age);

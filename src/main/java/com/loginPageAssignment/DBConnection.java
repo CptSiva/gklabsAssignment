@@ -1,5 +1,4 @@
 package com.loginPageAssignment;
-import java.io.*;
 import java.sql.*;
 public class DBConnection 
 {

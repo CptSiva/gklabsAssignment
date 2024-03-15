@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+</head>
+<body>
+
+<h2>Form Validation</h2>
+
+<form id="myForm" action="rege" method="post" onsubmit="validateForm(event)">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error"></span>
+    </div>
+    <div>
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" required>
+        <span id="ageError" class="error"></span>
+    </div>
+    <div>
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+    </div>
+       <div>
+       <button type="submit">Submit</button>
+        </div> 
+</form>
+
+<script>
+function validateForm(event) {
+    event.preventDefault(); // Prevent form submission
+    let email = document.getElementById('email').value;
+    let age = document.getElementById('age').value;
+
+    let emailError = document.getElementById('emailError');
+    let ageError = document.getElementById('ageError');
+
+    // Email validation
+    if (!isValidEmail(email)) {
+        emailError.textContent = "Invalid email format";
+        return;
+    } else {
+        emailError.textContent = "";
+    }
+
+    // Age validation
+    if (!isValidAge(age)) {
+        ageError.textContent = "Age must be a positive integer";
+        return;
+    } else {
+        ageError.textContent = "";
+    }
+
+    // If validation passed, submit the form
+    document.getElementById('myForm').submit();
+}
+
+function isValidEmail(email) {
+    // Basic email format validation using regular expression
+    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function isValidAge(age) {
+    // Age validation: must be a positive integer
+    return !isNaN(age) && parseInt(age) > 0;
+}
+</script>
+
+</body>
+</html>

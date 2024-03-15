@@ -1,6 +1,4 @@
 package com.loginPageAssignment;
-import java.io.*;
-import javax.servlet.*;
 import java.sql.*;
 public class RegistrationDAO
 {
